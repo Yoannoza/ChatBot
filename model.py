@@ -31,7 +31,7 @@ def model_load():
 
     # Exécuter la commande
     for i in commands:
-        result = subprocess.run(i, shell=True, capture_output=True, text=True)
+        result = subprocess.run(i, capture_output=True, text=True)
         msg = ""
 
         for a in i:
