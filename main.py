@@ -7,7 +7,7 @@ from mistralai.models.chat_completion import ChatMessage
 
 st.title("Chat With Mistral")
 
-model.model_load()
+# model.model_load()
 
 st.write("Bot is Ready")
 
