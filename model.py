@@ -19,4 +19,3 @@ def model_load():
         print(result.stdout)
         print(f'{msg} Standard error:')
         print(result.stderr)
-        print(f'{msg} Return code:', result.returncode)
