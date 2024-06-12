@@ -32,14 +32,21 @@ if prompt := st.chat_input("What is up?"):
 
 # Streamed response emulator
 def response_generator():
-    chat_response = client.chat(
-        model="mistral-large-latest",
-        messages=[ChatMessage(role="user", content=f"{prompt}")]
-    )
+    if prompt:
+        chat_response = client.chat(
+            model="mistral-large-latest",
+            messages=[ChatMessage(role="user", content=f"{prompt}")]
+        )
+    else:
+        chat_response = client.chat(
+            model="mistral-large-latest",
+            messages=[ChatMessage(role="user", content="Disponible ?")]
+        )
 
     response = chat_response.choices[0].message.content
 
     return response
+
 
     # for word in response.split():
     #     yield word + " "
