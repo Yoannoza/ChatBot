@@ -1,14 +1,17 @@
 import streamlit as st
 import model
 import time
-import subprocess
-import json
+import os
+from mistralai.client import MistralClient
+from mistralai.models.chat_completion import ChatMessage
 
 st.title("Chat With Mistral")
 
 model.model_load()
 
 st.write("Bot is Ready")
+
+client = MistralClient(api_key=api_key)
 
 # Initialize chat history
 if "messages" not in st.session_state:
@@ -29,27 +32,12 @@ if prompt := st.chat_input("What is up?"):
 
 # Streamed response emulator
 def response_generator():
-    # Créer le corps de la requête JSON en utilisant la variable prompt
-    data = {
-        "model": "mistral",
-        "prompt": prompt
-    }
+    chat_response = client.chat(
+        model=model,
+        messages=[ChatMessage(role="user", content=f"{prompt}")]
+    )
 
-    # Convertir le dictionnaire en chaîne JSON
-    data_st = json.dumps(data)
-
-    command = [
-        "curl", 
-        "http://localhost:11434/api/generate", 
-        "-d ", 
-        data_st
-    ]
-    result = subprocess.run(command, capture_output=True, text=True)
-    try:
-        response_json = json.loads(result.stdout)
-        response = response_json.get('response', 'Element not found')
-    except:
-        st.write("Erreur lors de la requete")
+    response = chat_response.choices[0].message.content
 
     for word in response.split():
         yield word + " "
