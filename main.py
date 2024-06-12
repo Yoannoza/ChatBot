@@ -33,7 +33,7 @@ if prompt := st.chat_input("What is up?"):
 # Streamed response emulator
 def response_generator():
     chat_response = client.chat(
-        model=model,
+        model="mistral-large-latest",
         messages=[ChatMessage(role="user", content=f"{prompt}")]
     )
 
