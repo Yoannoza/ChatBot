@@ -5,11 +5,11 @@ import os
 from mistralai.client import MistralClient
 from mistralai.models.chat_completion import ChatMessage
 
-st.title("Chat With Mistral")
+st.title("Let's Chat With Mistral")
 
 # model.model_load()
 
-st.write("Bot is Ready")
+# st.write("Bot is Ready")
 
 client = MistralClient(api_key="xkbaxNdKcVCEDOlpcXurZ5zmbMr9tgJg")
 
@@ -40,7 +40,7 @@ def response_generator():
     else:
         chat_response = client.chat(
             model="mistral-large-latest",
-            messages=[ChatMessage(role="user", content="Je parle francais. Disponible ?")]
+            messages=[ChatMessage(role="user", content="Disponible ?")]
         )
 
     response = chat_response.choices[0].message.content
