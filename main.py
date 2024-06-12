@@ -39,8 +39,8 @@ def response_generator():
     data_st = json.dumps(data)
 
     command = [
-        "curl ", 
-        "http://localhost:11434/api/generate ", 
+        "curl", 
+        "http://localhost:11434/api/generate", 
         "-d ", 
         data_st
     ]
