@@ -11,7 +11,7 @@ st.title("Chat With Mistral")
 
 st.write("Bot is Ready")
 
-client = MistralClient(api_key=api_key)
+client = MistralClient(api_key="xkbaxNdKcVCEDOlpcXurZ5zmbMr9tgJg")
 
 # Initialize chat history
 if "messages" not in st.session_state:
