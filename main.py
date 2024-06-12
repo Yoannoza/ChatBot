@@ -40,7 +40,7 @@ def response_generator():
     else:
         chat_response = client.chat(
             model="mistral-large-latest",
-            messages=[ChatMessage(role="user", content="Disponible ?")]
+            messages=[ChatMessage(role="user", content="Je parle francais. Disponible ?")]
         )
 
     response = chat_response.choices[0].message.content
