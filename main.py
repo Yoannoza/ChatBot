@@ -17,15 +17,6 @@ for message in st.session_state.messages:
     with st.chat_message(message["role"]):
         st.markdown(message["content"])
 
-# File uploader
-uploaded_file = st.file_uploader("Upload a file", type=["txt", "pdf", "docx", "png", "jpg", "jpeg"])
-if uploaded_file:
-    # Display uploaded file name
-    with st.chat_message("user"):
-        st.markdown(f"**Uploaded file:** {uploaded_file.name}")
-    # Add file upload info to chat history
-    st.session_state.messages.append({"role": "user", "content": f"**Uploaded file:** {uploaded_file.name}"})
-
 # Accept user input
 if prompt := st.chat_input("What is up?"):
     # Display user message in chat message container
