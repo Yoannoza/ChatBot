@@ -35,7 +35,7 @@ def response_generator():
     else:
         chat_response = client.chat(
             model="mistral-large-latest",
-            messages=[ChatMessage(role="user", content="Disponible ?")]
+            messages=[ChatMessage(role="user", content="")]
         )
 
     response = chat_response.choices[0].message.content
